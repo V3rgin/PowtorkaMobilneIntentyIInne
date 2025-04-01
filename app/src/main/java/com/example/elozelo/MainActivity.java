@@ -13,6 +13,7 @@ import android.os.Build;
 import android.os.Bundle;
 import android.util.Log;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -27,6 +28,7 @@ import androidx.core.view.WindowInsetsCompat;
 public class MainActivity extends AppCompatActivity {
 
     private Button wyslijPow, otworzStr, wybKont, pokazDialog;
+    private TextView text;
     private static final String CHANNEL_ID = "my_channel_id";
 
     @Override
@@ -47,6 +49,7 @@ public class MainActivity extends AppCompatActivity {
         pokazDialog = findViewById(R.id.pokazDialog);
         pokazDialog.setOnClickListener(v->showAlertDialogue());
 
+        text = findViewById(R.id.text);
     }
 
     private void createNotificationChannel() {
@@ -94,6 +97,7 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     private void dialPhoneNumber(String phoneNumber){
+        text.setText(phoneNumber);
         Intent intent = new Intent(Intent.ACTION_DIAL);
         intent.setData((Uri.parse("tel:" + phoneNumber)));
         try {
